@@ -97,5 +97,9 @@ Rscript -e "install.packages('HadoopStreaming', repos='http://cran.rstudio.com/'
 ## Xem kết quả
 
 ```bash
-hdfs dfs -cat "/user/$(whoami)/output/part-*"
+# Nếu chạy cách 1
+hdfs dfs -cat "/user/$(whoami)/output/part-*"1
+
+# Nếu chạy cách 2
+hdfs dfs -cat "/user/$(whoami)/output_advanced/part-*" 
 ```
