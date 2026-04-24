@@ -50,7 +50,9 @@ https://levelup.gitconnected.com/install-hadoop-on-ubuntu-operating-system-6e0ca
 
 ## Cài đặt trên môi trường Windows
 Tham khảo tại
+
 https://rstudio-education.github.io/hopr/starting.html
+
 https://duythanhcse.wordpress.com/2021/01/01/cai-dat-hadoop-tren-windows/
 
 ## Chuẩn bị dữ liệu trên HDFS
