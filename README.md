@@ -12,12 +12,8 @@ Word_Count/
 └── README.md
 ```
 
-## Mục tiêu
-- Đếm tần suất xuất hiện của mỗi từ trong một tập tin văn bản.
-- Chứng minh khả năng tích hợp R với Hadoop mà không cần thư viện phức tạp.
-
 ## Yêu cầu hệ thống
-- **Hệ điều hành**: Linux (khuyến nghị Ubuntu hoặc Arch Linux)
+- **Hệ điều hành**: Linux (khuyến nghị Ubuntu hoặc Arch Linux) hoặc Window 10 trở lên
 - **Java**: OpenJDK 11
 - **Hadoop**: 3.3.x hoặc 3.4.x (đã cấu hình single node)
 - **R**: phiên bản ≥ 4.0 (có `Rscript` trong PATH)
@@ -52,8 +48,9 @@ https://levelup.gitconnected.com/install-hadoop-on-ubuntu-operating-system-6e0ca
 ```
 
 
-## Cài đặt trên môi trường 
+## Cài đặt trên môi trường Windows
 Tham khảo tại
+https://rstudio-education.github.io/hopr/starting.html
 https://duythanhcse.wordpress.com/2021/01/01/cai-dat-hadoop-tren-windows/
 
 ## Chuẩn bị dữ liệu trên HDFS
