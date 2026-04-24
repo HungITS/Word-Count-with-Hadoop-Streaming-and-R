@@ -6,9 +6,10 @@ Dự án này demo bài toán **đếm số lần xuất hiện của từ** (Wo
 
 ```
 Word_Count/
-├── mapper.R      # Mapper: đọc stdin, tách từ, xuất "word 1"
-├── reducer.R     # Reducer: đọc stdin, cộng dồn số lần xuất hiện
-├── input.txt     # Dữ liệu đầu vào
+├── mapper.R                 # Mapper: đọc stdin, tách từ, xuất "từ\t1"
+├── reducer.R                # Reducer: đọc stdin, cộng dồn số lần xuất hiện
+├── wordcount_hs_advanced.R  # Mapper + Reducer gộp chung, dùng thư viện HadoopStreaming
+├── input.txt                # Dữ liệu đầu vào
 └── README.md
 ```
 
@@ -64,6 +65,8 @@ hdfs dfs -put input.txt /user/$(whoami)/input
 
 ## Chạy job Hadoop Streaming
 
+### Cách 1: Sử dụng mapper.R và reducer.R riêng biệt
+
 ```bash
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
   -D mapreduce.job.reduces=2 \
@@ -73,6 +76,22 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
   -reducer "Rscript reducer.R" \
   -file mapper.R \
   -file reducer.R
+```
+
+### Cách 2: Sử dụng wordcount_hs_advanced.R (cần cài thư viện HadoopStreaming)
+
+```bash
+# Cài thư viện HadoopStreaming trong R
+Rscript -e "install.packages('HadoopStreaming', repos='http://cran.rstudio.com/')"
+
+# Chạy job
+ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \      [14:08:16]
+  -D mapreduce.job.reduces=2 \
+  -input /user/$(whoami)/input \
+  -output /user/$(whoami)/output_advanced \
+  -mapper "./wordcount_hs_advanced.R --mapper" \
+  -reducer "./wordcount_hs_advanced.R --reducer" \
+  -file wordcount_hs_advanced.R \
 ```
 
 ## Xem kết quả
